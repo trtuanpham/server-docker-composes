@@ -1,0 +1,22 @@
+services:
+  mongodb:
+    container_name: MongoDB
+    image: mongo:8.0
+    restart: always
+    command:
+      - --storageEngine
+      - wiredTiger
+      - --auth
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=789852
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./docker/mongodb-data:/data/db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

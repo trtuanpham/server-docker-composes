@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  redis:
+    container_name: ClusterRedis
+    image: redis:6.2.6
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
